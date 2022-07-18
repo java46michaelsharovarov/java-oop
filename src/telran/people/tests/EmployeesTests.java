@@ -9,33 +9,42 @@ import telran.people.WageEmployee;
 import telran.people.SalesEmployee;
 
 class EmployeesTests {
-
+	private static final int ID = 45679123;
+	private static final int BIRTH_YEAR = 2000;
+	private static final int BASIC_SALARY = 15000;
+	private static final int WAGE = 50;
+	private static final int ANOTHER_WAGE = 30;
+	private static final int HOYRS = 20;
+	private static final int ANOTHER_HOYRS = 10;
+	private static final int SALES = 10;
+	private static final int PERCENT_PAY = 2;
+	private static final int ANOTHER_PERCENT_PAY = 10;
 	@Test
 	void Employee() {
-		Employee employee = new Employee(45679123, 2000, "email@email.com", 15000);
-		assertEquals(45679123, employee.getId());
-		assertEquals(2000, employee.getBirthYear());
+		Employee employee = new Employee(ID, BIRTH_YEAR, "email@email.com", BASIC_SALARY);
+		assertEquals(ID, employee.getId());
+		assertEquals(BIRTH_YEAR, employee.getBirthYear());
 		assertEquals("email@email.com", employee.getEmail());
-		assertEquals(15000, employee.computeSalary());
+		assertEquals(BASIC_SALARY, employee.computeSalary());
 		employee.setBasicSalary(10000);
 		assertEquals(10000, employee.computeSalary());
 	}
 	@Test
 	void WageEmployee() {		
 		WageEmployee wageEmployee = 
-				new WageEmployee(45679123, 2000, "email@email.com", 15000, 50, 20);
+				new WageEmployee(ID, BIRTH_YEAR, "email@email.com", BASIC_SALARY, WAGE, HOYRS);
 		assertEquals(16000, wageEmployee.computeSalary());
-		wageEmployee.setWage(30);
-		wageEmployee.setHours(10);
+		wageEmployee.setWage(ANOTHER_WAGE);
+		wageEmployee.setHours(ANOTHER_HOYRS);
 		assertEquals(15300, wageEmployee.computeSalary());
 	}
 	@Test
 	void SalesEmployee() {		
 		SalesEmployee salesEmployee = 
-				new SalesEmployee(45679123, 2000, "email@email.com", 15000, 10000, 5);
-		assertEquals(15500, salesEmployee.computeSalary());
+				new SalesEmployee(ID, BIRTH_YEAR, "email@email.com", BASIC_SALARY, SALES, PERCENT_PAY);
+		assertEquals(15000,2 , salesEmployee.computeSalary());
 		salesEmployee.setSales(20000);
-		salesEmployee.setPercentPay(10);
+		salesEmployee.setPercentPay(ANOTHER_PERCENT_PAY);
 		assertEquals(17000, salesEmployee.computeSalary());
 	}
 }

@@ -16,6 +16,6 @@ public class SalesEmployee extends Employee {
 	}
 	@Override
 	public int computeSalary() {
-		return super.computeSalary() + (this.sales / 100 * this.percentPay);
+		return super.computeSalary() + (int) Math.round(this.sales / 100.0 * this.percentPay);
 	}
 }
