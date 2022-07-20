@@ -5,12 +5,12 @@ import java.lang.System;
 
 public class CompanySortedArray extends CompanyArray {
 	@Override
-	public boolean addEmployee(Employee empl) {
-		if (getEmployee(empl.getId()) != null) {
+	public boolean addEmployee(Employee empl) {		
+		int index = getEmployeeIndex(empl.getId());
+		if(index > 0) {
 			return false;
 		}
-		int index = getEmployeeIndex(empl.getId());
-		index = index < 0 ? -(index + 1) : index; 
+		index = -(index + 1); 
 		Employee[] tmp = new Employee[employees.length + 1];
 		System.arraycopy(employees, 0, tmp, 0, index);
 		tmp[index] = empl;
