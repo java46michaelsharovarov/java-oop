@@ -14,7 +14,8 @@ public class Strings {
 			Matcher matcherDate = patternDates.matcher(date);
 			if (!matcherDate.matches()) {
 				throw new IllegalArgumentException(String.format(
-						"%s - wrong date format, should be in the format D/M/YYYY (D = 1-31, M = 1-12)",	date));
+						"%s - wrong date format, "
+						+ "should be in the format D/M/YYYY (D = 1-31, M = 1-12)", date));
 			} 
 		}
 		String[] res = Arrays.copyOf(dates, dates.length);

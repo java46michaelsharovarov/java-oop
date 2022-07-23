@@ -18,20 +18,6 @@ public class DatesComparator implements Comparator<String> {
 				return res;
 			} 
 		}
-		
-		
-//		Pattern patternDates = Pattern.compile("([1-9]|[12][\\d]|3[01])/([1-9]|1[0-2])/([\\d]{4})"); 
-//		Matcher matcherDate1 = patternDates.matcher(str1);
-//		Matcher matcherDate2 = patternDates.matcher(str2);
-//		int res = 0;
-//		if (matcherDate1.matches() && matcherDate2.matches()) {  
-//			for (int i = 3; i > 0; i--) {
-//				res = Integer.compare(valueOf(matcherDate1.group(i)), valueOf(matcherDate2.group(i)));
-//				if (res != 0) {
-//					return res;
-//				} 
-//			}
-//		}
 		return res;
 	}
 
