@@ -13,7 +13,8 @@ public class Strings {
 		for (String date: dates) {
 			Matcher matcherDate = patternDates.matcher(date);
 			if (!matcherDate.matches()) {
-				return dates;
+				throw new IllegalArgumentException(String.format(
+						"%s - wrong date format, should be in the format D/M/YYYY (D = 1-31, M = 1-12)",	date));
 			} 
 		}
 		String[] res = Arrays.copyOf(dates, dates.length);
