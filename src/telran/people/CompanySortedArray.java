@@ -10,16 +10,10 @@ public class CompanySortedArray extends CompanyArray {
 		if(index >= 0) {
 			return false;
 		}
-		index = -(index + 1); 
-		Employee[] tmp = new Employee[employees.length + 1];
-		System.arraycopy(employees, 0, tmp, 0, index);
-		tmp[index] = empl;
-		System.arraycopy(employees, index, tmp, index  + 1, employees.length - index);
-		employees = tmp;
-		//***********************************//
-//		employees = Arrays.copyOf(employees, employees.length + 1);
-//		System.arraycopy(employees, ind, employees, ind + 1, employees.length - 1 - ind);
-//		employees[ind] = empl;
+		index = -(index + 1);
+		employees = Arrays.copyOf(employees, employees.length + 1);
+		System.arraycopy(employees, index, employees, index + 1, employees.length - 1 - index);
+		employees[index] = empl;
 		return true;
 	}	
 	@Override 

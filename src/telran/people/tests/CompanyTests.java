@@ -40,8 +40,7 @@ class CompanyTests {
 	@BeforeEach
 	void setUp() throws Exception {
 		//company = new CompanyArray();
-		//TODO for HW #10
-		company = new CompanySortedArray(); //for HW #10
+		company = new CompanySortedArray();
 		Arrays.sort(employees);
 		for (int i = 0; i < employees.length; i++) {
 			company.addEmployee(employees[i]);
@@ -85,8 +84,7 @@ class CompanyTests {
 		assertEquals(ID1, resultEmployees[0].getId());
 		assertEquals(ID2, resultEmployees[1].getId());
 		assertEquals(ID3, resultEmployees[2].getId());
-		assertEquals(COMPANY_SIZE, resultEmployees.length);
-		
+		assertEquals(COMPANY_SIZE, resultEmployees.length);		
 	}
 
 	@Test
@@ -100,7 +98,17 @@ class CompanyTests {
 	private void fillRandomEmployees() {
 		for (int i = 0; i < N_EMPLOYEES; i++) {
 			company.addEmployee(new Employee((long)(Math.random() * Long.MAX_VALUE), 1980, EMAIL1, 1000));
-		}
-		
+		}		
+	}
+	
+	@Test
+	void testSortByAge() {
+		Employee[] expected = {empl3, empl1, empl2};
+		assertArrayEquals(expected, company.sortEmployeesByAge());
+	}
+	@Test
+	void testSortBySalary() {
+		Employee[] expected = {empl2, empl3, empl1};
+			assertArrayEquals(expected, company.sortEmployeesBySalary());
 	}
 }
