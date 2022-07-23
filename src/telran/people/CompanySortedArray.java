@@ -7,7 +7,7 @@ public class CompanySortedArray extends CompanyArray {
 	@Override
 	public boolean addEmployee(Employee empl) {		
 		int index = getEmployeeIndex(empl.getId());
-		if(index > 0) {
+		if(index >= 0) {
 			return false;
 		}
 		index = -(index + 1); 
@@ -16,6 +16,10 @@ public class CompanySortedArray extends CompanyArray {
 		tmp[index] = empl;
 		System.arraycopy(employees, index, tmp, index  + 1, employees.length - index);
 		employees = tmp;
+		//***********************************//
+//		employees = Arrays.copyOf(employees, employees.length + 1);
+//		System.arraycopy(employees, ind, employees, ind + 1, employees.length - 1 - ind);
+//		employees[ind] = empl;
 		return true;
 	}	
 	@Override 
