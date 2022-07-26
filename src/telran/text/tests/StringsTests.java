@@ -27,17 +27,14 @@ class StringsTests {
 	
 	@Test
 	void wrongDate() {
-		boolean hasException = false;
 		String[] ar = {DATE_4, DATE_1, DATE_6, DATE_2, WRONG_DATE, DATE_3, DATE_5};
 		try {
 			Strings.sortStringsAsDates(ar);
+			fail("Exeption was not thrown");
 			
 		} catch (IllegalArgumentException e) {
-			hasException = true;
 			System.out.println(e.getMessage());
 		}
-		assertTrue(hasException);
-		
 	}
 
 }

@@ -6,7 +6,7 @@ public class Person  implements Comparable<Person>{
 	protected long id;
 	private int birthYear;
 	private String email;
-	private static Pattern patternEmail = Pattern.compile("[\\w.-]+@[A-Za-z.]+");
+	private static Pattern patternEmail = Pattern.compile("[A-Za-z\\d\\.-]+@[A-Za-z\\.]+");
 	public Person(long id, int birthYear, String email) {
 		this.id = id;
 		this.birthYear = birthYear;
