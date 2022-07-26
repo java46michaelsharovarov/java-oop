@@ -134,7 +134,20 @@ class CompanyTests {
 	
 	@Test
 	void companyIterableTest() {
-		//TODO
-		//Think of the test that should pass for both CompanyArray and CompanySortedTest
+		Employee expected[] = {empl1, empl2, empl3};
+		Employee actual[] = getActualCompany();
+		assertArrayEquals(expected, actual);	
+	}
+
+	private Employee[] getActualCompany() {
+		Employee[] res = new Employee[employees.length];
+		int ind = 0;
+		for(Employee empl: company) {
+			res[ind++] = empl;
+		}
+		if(!(company instanceof CompanySortedArray)) {
+			Arrays.sort(res);
+		}
+		return res;
 	}
 }

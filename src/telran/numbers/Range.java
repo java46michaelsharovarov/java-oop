@@ -33,13 +33,12 @@ public class Range implements Iterable<Integer> {
 	}
 	
 	private class RangeIterator implements Iterator<Integer> {
-		//If predicate == null all range numbers should be iterated
-        int current = min; //TODO update method for iterating only numbers matching the predicate
-	
+		boolean predicateIsNull = predicate == null;
+		int current = predicateIsNull ? min : predicate.test(min) ? min : min + 1;
+		int prevCurrent;
+		
         @Override
 		public boolean hasNext() {
-			//TODO
-			//update method for iterating only numbers matching the predicate
 			return current <= max;
 		}
 
@@ -48,9 +47,9 @@ public class Range implements Iterable<Integer> {
 			if (!hasNext()) {
 				throw new NoSuchElementException();
 			}
-			//TODO
-			//update method for iterating only numbers matching the predicate
-			return current++;
+			prevCurrent = current;
+			current = predicateIsNull ? current + 1 : current + 2;
+			return prevCurrent;
 		}		
 	}
 }
