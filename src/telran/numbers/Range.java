@@ -31,15 +31,22 @@ public class Range implements Iterable<Integer> {
 	public int length () {
 		return max - min + 1;
 	}
-	
+		
 	private class RangeIterator implements Iterator<Integer> {
-		boolean predicateIsNull = predicate == null;
-		int current = predicateIsNull ? min : predicate.test(min) ? min : min + 1;
-		int prevCurrent;
+		boolean isPredicateNull = predicate == null;
+		int next = isPredicateNull ? min : getNextElement(min);
+		int current;
 		
         @Override
 		public boolean hasNext() {
-			return current <= max;
+			return next <= max && (isPredicateNull || predicate.test(next));
+		}
+
+		private int getNextElement(int next) {
+			while(next <= max && !predicate.test(next)) {
+				next++;
+				}
+			return next;
 		}
 
 		@Override
@@ -47,9 +54,9 @@ public class Range implements Iterable<Integer> {
 			if (!hasNext()) {
 				throw new NoSuchElementException();
 			}
-			prevCurrent = current;
-			current = predicateIsNull ? current + 1 : current + 2;
-			return prevCurrent;
+			current = next;
+			next = isPredicateNull? ++next : getNextElement(++next);
+			return current;
 		}		
 	}
 }
