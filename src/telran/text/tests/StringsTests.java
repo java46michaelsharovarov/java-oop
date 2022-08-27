@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import telran.people.Employee;
-import telran.people.SalesEmployee;
 import telran.text.Strings;
 
 class StringsTests {

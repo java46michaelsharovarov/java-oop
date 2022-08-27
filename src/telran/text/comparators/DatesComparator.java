@@ -1,8 +1,6 @@
 package telran.text.comparators;
 
 import java.util.Comparator;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import static java.lang.Integer.*;
 
 public class DatesComparator implements Comparator<String> {

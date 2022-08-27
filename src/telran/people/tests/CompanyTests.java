@@ -116,7 +116,7 @@ class CompanyTests {
 	@Test
 	void testFindSalesEmployee() {
 		Employee[] expected = {empl2};
-		assertArrayEquals(expected, company.findEmployees(new SalesEmployeePredicate()));
+		assertArrayEquals(expected, company.findEmployees(t -> t instanceof SalesEmployee));
 	}
 	
 	@Test
@@ -125,11 +125,11 @@ class CompanyTests {
 		Employee[] expected20000_30000 = {};
 		Employee[] expected1000_1500 = {empl2};
 		assertArrayEquals(expectedGT10000, 
-				company.findEmployees(new SalaryRangePredicate(10000, Integer.MAX_VALUE)));
+				company.findEmployees(new SalaryRangePredicate1(10000, Integer.MAX_VALUE)));
 		assertArrayEquals(expected20000_30000,
-				company.findEmployees(new SalaryRangePredicate(20000, 30000)));
+				company.findEmployees(new SalaryRangePredicate1(20000, 30000)));
 		assertArrayEquals(expected1000_1500,
-				company.findEmployees(new SalaryRangePredicate(1000, 1500)));
+				company.findEmployees(new SalaryRangePredicate1(1000, 1500)));
 	}
 	
 	@Test

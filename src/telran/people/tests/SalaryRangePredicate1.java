@@ -4,10 +4,10 @@ import java.util.function.Predicate;
 
 import telran.people.Employee;
 
-public class SalaryRangePredicate implements Predicate<Employee> {
+public class SalaryRangePredicate1 implements Predicate<Employee> {
 	private int minSalary;
 	private int maxSalary;
-		public SalaryRangePredicate(int minSalary, int maxSalary) {
+		public SalaryRangePredicate1(int minSalary, int maxSalary) {
 		this.minSalary = minSalary;
 		this.maxSalary = maxSalary;
 	}

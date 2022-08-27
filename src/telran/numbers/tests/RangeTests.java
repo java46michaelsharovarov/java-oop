@@ -2,18 +2,19 @@ package telran.numbers.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.function.Predicate;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import telran.numbers.EvenNumbersPredicate;
-import telran.numbers.FalseNumbersPredicate;
-import telran.numbers.MultiplicityOfThreePredicate;
-import telran.numbers.OddNumbersPredicate;
 import telran.numbers.Range;
-import telran.numbers.TrueNumbersPredicate;
 
 class RangeTests {
 	Range range;
+	Predicate<Integer> AllFalsePredicate = e -> false;
+	Predicate<Integer> EvenPredicate = e -> e % 2 == 0;
+	Predicate<Integer> MultiplicityOfThreePredicate = e -> e % 3 == 0;
+	Predicate<Integer> OddPredicate = e -> e % 2 != 0;
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -35,7 +36,7 @@ class RangeTests {
 	@Test
 	void iterableEvenNumbersPredicateTest() {
 		int expected[] = {2, 4, 6, 8};
-		range.setPredicate(new EvenNumbersPredicate());
+		range.setPredicate(EvenPredicate);
 		int actual[] = getActualArray(4);
 		assertArrayEquals(expected, actual);
 	}
@@ -43,7 +44,7 @@ class RangeTests {
 	@Test
 	void iterableOddNumbersPredicateTest() {
 		int expected[] = {1, 3, 5, 7, 9};
-		range.setPredicate(new OddNumbersPredicate());
+		range.setPredicate(OddPredicate);
 		int actual[] = getActualArray(5);
 		assertArrayEquals(expected, actual);
 	}
@@ -51,7 +52,7 @@ class RangeTests {
 	@Test
 	void iterableMultiplicityOfThreePredicateTest() {
 		int expected[] = {3, 6, 9};
-		range.setPredicate(new MultiplicityOfThreePredicate());
+		range.setPredicate(MultiplicityOfThreePredicate);
 		int actual[] = getActualArray(3);
 		assertArrayEquals(expected, actual);
 	}
@@ -59,7 +60,7 @@ class RangeTests {
 	@Test
 	void iterableTrueNumbersPredicateTest() {
 		int expected[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-		range.setPredicate(new TrueNumbersPredicate());
+		range.setPredicate(AllFalsePredicate.negate());
 		int actual[] = getActualArray(9);
 		assertArrayEquals(expected, actual);
 	}
@@ -67,7 +68,7 @@ class RangeTests {
 	@Test
 	void iterableFalseNumbersPredicateTest() {
 		int expected[] = {};
-		range.setPredicate(new FalseNumbersPredicate());
+		range.setPredicate(AllFalsePredicate);
 		int actual[] = getActualArray(0);
 		assertArrayEquals(expected, actual);
 	}
